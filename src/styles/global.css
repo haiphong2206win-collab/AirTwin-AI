@@ -169,3 +169,15 @@ body {
     color: var(--color-primary);
     font-weight: 800;
 }
+
+
+/*css báo lỗi */
+.form-error {
+    margin: 0;
+    color: var(--color-danger);
+    background: #fee2e2;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 14px;
+}
