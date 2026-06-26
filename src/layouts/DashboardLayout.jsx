@@ -1,10 +1,12 @@
+import { NavLink } from "react-router";
 import AppLogo from "../components/common/AppLogo.jsx";
 
 export default function DashboardLayout({ role, title, subtitle, children }) {
 
-    {/*layout nhận dữ liệu từ trang khác truyền vào. */ }
+    /*layout nhận dữ liệu từ trang khác truyền vào. */
     const isPatient = role === "patient";
-
+    const navClass = ({ isActive }) =>
+        isActive ? "dashboard-nav__item active" : "dashboard-nav__item";
     return (
         <main className="dashboard-layout">
             <aside className="dashboard-sidebar">
@@ -35,25 +37,25 @@ export default function DashboardLayout({ role, title, subtitle, children }) {
                         </>
                     ) : (
                         <>
-                            <button className="dashboard-nav__item active" type="button">
+                            <NavLink to="/doctor/overview" className={navClass}>
                                 Tổng quan bệnh nhân
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/doctor/patients" className={navClass}>
                                 Danh sách bệnh nhân
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/doctor/alerts" className={navClass}>
                                 Danh sách cảnh báo
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/doctor/patient-detail" className={navClass}>
                                 Chi tiết bệnh nhân
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/doctor/reports" className={navClass}>
                                 Báo cáo AI
-                            </button>
+                            </NavLink>
                         </>
                     )}
                 </nav>
