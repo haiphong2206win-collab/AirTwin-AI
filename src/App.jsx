@@ -8,6 +8,8 @@ import CoughRecording from "./pages/CoughRecording.jsx";
 import HealthQuestions from "./pages/HealthQuestions.jsx";
 import EnvironmentInfo from "./pages/EnvironmentInfo.jsx";
 import AiCopilot from "./pages/AiCopilot.jsx";
+import RecoveryHistory from "./pages/RecoveryHistory.jsx";
+
 export default function App() {
   return (
     <Routes>
@@ -19,6 +21,7 @@ export default function App() {
       <Route path="/patient/health-questions" element={<HealthQuestions />} />
       <Route path="/patient/environment" element={<EnvironmentInfo />} />
       <Route path="/patient/ai-copilot" element={<AiCopilot />} />
+      <Route path="/patient/recovery-history" element={<RecoveryHistory />} />
 
 
       <Route path="/doctor/overview" element={<DoctorOverview />} />
