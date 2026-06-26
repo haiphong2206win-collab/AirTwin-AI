@@ -1,10 +1,29 @@
 import { useState } from "react";
 /* sử dụng usestate để load trạng thái chọn */
+
+import { useNavigate } from "react-router";
+/* công cụ của React Router để chuyển trang */
 import AppLogo from "../components/common/AppLogo.jsx";
 
 export default function AuthPage() {
+
+    const navigate = useNavigate();
+    // hàm navigate() để điều hướng trang.
     const [role, setRole] = useState("patient");
     /* ban đầu mặc định là bệnh nhân */
+
+    // ham xử lý đăng nhập 
+    function handleLogin(event) {
+        event.preventDefault();
+        // ngăn form reload lại trang. ko có sẽ load và mất trạng thái 
+
+        if (role === "patient") {
+            navigate("/patient/overview");
+        } else {
+            navigate("/doctor/overview");
+        }
+    }
+
     return (
         <main className="auth-page">
             <section className="auth-hero">
@@ -30,7 +49,9 @@ export default function AuthPage() {
 
                 <p>Truy cập hệ thống theo dõi phục hồi hô hấp AirTwin AI.</p>
 
-                <form className="auth-form">
+
+                <form className="auth-form" onSubmit={handleLogin}>
+                    {/* khi submit sẽ gọi hàm */}
                     <label>
                         Email
                         <input type="email" placeholder="Nhập email" />
