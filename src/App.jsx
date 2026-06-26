@@ -5,6 +5,7 @@ import PatientOverview from "./pages/PatientOverview.jsx";
 import DoctorOverview from "./pages/DoctorOverview.jsx";
 import DoctorPatients from "./pages/DoctorPatients.jsx";
 import DoctorAlerts from "./pages/DoctorAlerts.jsx";
+import DoctorPatientDetail from "./pages/DoctorPatientDetail.jsx";
 
 export default function App() {
   return (
@@ -15,6 +16,8 @@ export default function App() {
       <Route path="/doctor/overview" element={<DoctorOverview />} />
       <Route path="/doctor/patients" element={<DoctorPatients />} />
       <Route path="/doctor/alerts" element={<DoctorAlerts />} />
+      <Route path="/doctor/patient-detail" element={<DoctorPatientDetail />} />
+
     </Routes>
   );
 }
