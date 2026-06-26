@@ -205,6 +205,7 @@ body {
 .dashboard-nav__item {
     width: 100%;
     text-align: left;
+    text-decoration: none;
     border: none;
     border-radius: 14px;
     padding: 14px 16px;

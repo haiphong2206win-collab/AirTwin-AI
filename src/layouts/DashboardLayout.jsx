@@ -1,9 +1,16 @@
+import { NavLink } from "react-router";
+//NavLink dùng để chuyển trang trong React, giống link nhưng không reload lại web.
 import AppLogo from "../components/common/AppLogo.jsx";
 
 export default function DashboardLayout({ role, title, subtitle, children }) {
 
-    {/*layout nhận dữ liệu từ trang khác truyền vào. */ }
+    /*layout nhận dữ liệu từ trang khác truyền vào. */
     const isPatient = role === "patient";
+
+    //khỏi phải viết lặp className dài cho từng menu.
+    const navClass = ({ isActive }) =>
+        isActive ? "dashboard-nav__item active" : "dashboard-nav__item";
+
 
     return (
         <main className="dashboard-layout">
@@ -12,26 +19,35 @@ export default function DashboardLayout({ role, title, subtitle, children }) {
 
                 <nav className="dashboard-nav">
                     {isPatient ? (
+
                         <>
-                            <button className="dashboard-nav__item active" type="button">
+                            <NavLink to="/patient/overview" className={navClass}>
                                 Tổng quan phục hồi
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/patient/tasks" className={navClass}>
                                 Nhiệm vụ hôm nay
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/patient/cough-recording" className={navClass}>
                                 Ghi âm tiếng ho
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/patient/health-questions" className={navClass}>
                                 Câu hỏi sức khỏe
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/patient/environment" className={navClass}>
+                                Thông tin môi trường
+                            </NavLink>
+
+                            <NavLink to="/patient/ai-copilot" className={navClass}>
                                 AI Copilot
-                            </button>
+                            </NavLink>
+
+                            <NavLink to="/patient/recovery-history" className={navClass}>
+                                Lịch sử phục hồi
+                            </NavLink>
                         </>
                     ) : (
                         <>
