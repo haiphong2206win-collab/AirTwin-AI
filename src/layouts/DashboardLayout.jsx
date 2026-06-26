@@ -72,7 +72,7 @@ export default function DashboardLayout({ role, title, subtitle, children }) {
 
                     <div className="dashboard-user">
                         <span>{isPatient ? "Vai trò bệnh nhân" : "Vai trò bác sĩ"}</span>
-                        <strong>{isPatient ? "Nguyễn Minh Anh" : "Dr. Lê Hoàng"}</strong>
+                        <strong>{isPatient ? "Dương Ngọc Quang " : "Dr. Dương Phong"}</strong>
                     </div>
                 </header>
 

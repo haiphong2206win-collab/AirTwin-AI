@@ -333,3 +333,83 @@ body {
 .task-list span {
     color: var(--color-muted);
 }
+
+
+/* CSS doctor */
+.status-pill--danger {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.panel-header h2 {
+    margin: 0 0 6px;
+}
+
+.panel-header p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.patient-table {
+    display: grid;
+    gap: 10px;
+}
+
+.patient-table__row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1.4fr;
+    gap: 14px;
+    align-items: center;
+    padding: 16px;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+}
+
+.patient-table__row--head {
+    background: transparent;
+    border: none;
+    color: var(--color-muted);
+    font-weight: 800;
+    padding-top: 0;
+}
+
+.alert-list {
+    display: grid;
+    gap: 14px;
+}
+
+.alert-item {
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    background: #f8fafc;
+}
+
+.alert-item span {
+    color: var(--color-muted);
+}
+
+.alert-item--danger {
+    background: #fff1f2;
+    border-color: #fecdd3;
+}
+
+.alert-item--warning {
+    background: #fffbeb;
+    border-color: #fde68a;
+}
+
+.alert-item--info {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
