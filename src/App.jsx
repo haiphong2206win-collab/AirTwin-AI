@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router";
 import AuthPage from "./pages/AuthPage.jsx";
 import PatientOverview from "./pages/PatientOverview.jsx";
 import DoctorOverview from "./pages/DoctorOverview.jsx";
+import DoctorPatients from "./pages/DoctorPatients.jsx";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/patient/overview" element={<PatientOverview />} />
       <Route path="/doctor/overview" element={<DoctorOverview />} />
+      <Route path="/doctor/patients" element={<DoctorPatients />} />
     </Routes>
   );
 }
