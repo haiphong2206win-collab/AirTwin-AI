@@ -460,3 +460,34 @@ body {
 .analysis-grid strong {
     font-size: 22px;
 }
+
+/* Thêm CSS cho form câu hỏi*/
+.question-list {
+    display: grid;
+    gap: 18px;
+}
+
+.question-list label {
+    display: grid;
+    gap: 8px;
+    font-weight: 700;
+}
+
+.question-list select,
+.question-list textarea {
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    outline: none;
+    background: white;
+}
+
+.question-list select:focus,
+.question-list textarea:focus {
+    border-color: var(--color-primary);
+}
+
+.question-list textarea {
+    min-height: 120px;
+    resize: vertical;
+}
