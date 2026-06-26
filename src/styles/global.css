@@ -425,3 +425,14 @@ body {
 .text-link:hover {
     text-decoration: underline;
 }
+
+/*cảnh bảo */
+.alert-item button {
+    width: fit-content;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: white;
+    color: var(--color-primary);
+    font-weight: 800;
+}
