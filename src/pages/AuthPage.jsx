@@ -1,6 +1,10 @@
+import { useState } from "react";
+/* sử dụng usestate để load trạng thái chọn */
 import AppLogo from "../components/common/AppLogo.jsx";
 
 export default function AuthPage() {
+    const [role, setRole] = useState("patient");
+    /* ban đầu mặc định là bệnh nhân */
     return (
         <main className="auth-page">
             <section className="auth-hero">
@@ -39,10 +43,18 @@ export default function AuthPage() {
 
                     <div>
                         <p className="form-label">Vai trò</p>
-
+                        {/*cho nút “Bệnh nhân / Bác sĩ” bấm được và có trạng thái đang chọn. */}
                         <div className="role-options">
-                            <button type="button">Bệnh nhân</button>
-                            <button type="button">Bác sĩ</button>
+                            {/*khi bấm nút Bệnh nhân thì React đổi role thành "patient".*/}
+                            <button type="button"
+                                className={role === "patient" ? "active" : ""}
+                                onClick={() => setRole("patient")}
+
+                            >Bệnh nhân</button>
+                            <button type="button"
+                                className={role === "doctor" ? "active" : ""}
+                                onClick={() => setRole("doctor")}
+                            >Bác sĩ</button>
                         </div>
                     </div>
 

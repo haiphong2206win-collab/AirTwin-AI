@@ -142,6 +142,13 @@ body {
     font-weight: 700;
 }
 
+/* nút nào được chọn sẽ có màu khác  */
+.role-options button.active {
+    border-color: var(--color-primary);
+    background: #dbeafe;
+    color: var(--color-primary);
+}
+
 .primary-button {
     border: none;
     border-radius: 16px;
