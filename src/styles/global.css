@@ -456,3 +456,30 @@ body {
     color: var(--color-muted);
     line-height: 1.6;
 }
+
+/* CSS AI bac si */
+.report-grid {
+    display: grid;
+    gap: 14px;
+}
+
+.report-grid div {
+    display: grid;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+}
+
+.report-grid span {
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.ai-summary {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.8;
+    font-size: 17px;
+}
