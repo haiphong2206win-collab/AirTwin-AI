@@ -6,6 +6,8 @@ import DoctorOverview from "./pages/DoctorOverview.jsx";
 import PatientTasks from "./pages/PatientTasks.jsx";
 import CoughRecording from "./pages/CoughRecording.jsx";
 import HealthQuestions from "./pages/HealthQuestions.jsx";
+import EnvironmentInfo from "./pages/EnvironmentInfo.jsx";
+import AiCopilot from "./pages/AiCopilot.jsx";
 export default function App() {
   return (
     <Routes>
@@ -15,6 +17,9 @@ export default function App() {
       <Route path="/patient/tasks" element={<PatientTasks />} />
       <Route path="/patient/cough-recording" element={<CoughRecording />} />
       <Route path="/patient/health-questions" element={<HealthQuestions />} />
+      <Route path="/patient/environment" element={<EnvironmentInfo />} />
+      <Route path="/patient/ai-copilot" element={<AiCopilot />} />
+
 
       <Route path="/doctor/overview" element={<DoctorOverview />} />
     </Routes>

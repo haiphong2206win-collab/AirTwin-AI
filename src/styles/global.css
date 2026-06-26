@@ -491,3 +491,95 @@ body {
     min-height: 120px;
     resize: vertical;
 }
+
+/*CSS EnvironmentInfo */
+.environment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.environment-grid div {
+    display: grid;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+}
+
+.environment-grid span {
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+/*CSS AI */
+.copilot-panel {
+    display: grid;
+    gap: 16px;
+}
+
+.chat-message {
+    max-width: 720px;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid var(--color-border);
+}
+
+.chat-message p {
+    margin: 8px 0 0;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.chat-message--ai {
+    background: #eff6ff;
+}
+
+.chat-message--user {
+    background: #f8fafc;
+    justify-self: end;
+}
+
+.chat-input {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.chat-input input {
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    outline: none;
+}
+
+.chat-input input:focus {
+    border-color: var(--color-primary);
+}
+
+.chat-input button {
+    border: none;
+    border-radius: 14px;
+    padding: 0 22px;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 800;
+}
+
+.suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.suggestion-grid button {
+    text-align: left;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 16px;
+    background: #f8fafc;
+    color: var(--color-text);
+    font-weight: 700;
+}
