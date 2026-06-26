@@ -55,40 +55,7 @@ export default function AuthPage() {
                     Chưa có tài khoản? <button type="button">Đăng ký</button>
                 </p>
             </section>
-            <section className="auth-card">
-                <h2>Đăng nhập</h2>
 
-                <p>Truy cập hệ thống theo dõi phục hồi hô hấp AirTwin AI.</p>
-
-                <form className="auth-form">
-                    <label>
-                        Email
-                        <input type="email" placeholder="Nhập email" />
-                    </label>
-
-                    <label>
-                        Mật khẩu
-                        <input type="password" placeholder="Nhập mật khẩu" />
-                    </label>
-
-                    <div>
-                        <p className="form-label">Vai trò</p>
-
-                        <div className="role-options">
-                            <button type="button">Bệnh nhân</button>
-                            <button type="button">Bác sĩ</button>
-                        </div>
-                    </div>
-
-                    <button type="submit" className="primary-button">
-                        Đăng nhập
-                    </button>
-                </form>
-
-                <p className="auth-switch">
-                    Chưa có tài khoản? <button type="button">Đăng ký</button>
-                </p>
-            </section>
         </main>
     );
 }
