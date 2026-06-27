@@ -1,5 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import MetricCard from "../components/dashboard/MetricCard.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function EnvironmentInfo() {
     return (
@@ -38,9 +39,7 @@ export default function EnvironmentInfo() {
                 />
             </div>
 
-            <section className="dashboard-panel">
-                <h2>Khuyến nghị môi trường</h2>
-
+            <DashboardPanel title="Khuyến nghị môi trường">
                 <div className="task-list">
                     <div>
                         <strong>Giữ phòng thông thoáng</strong>
@@ -57,11 +56,9 @@ export default function EnvironmentInfo() {
                         <span>Độ ẩm quá thấp có thể làm đường thở khô và dễ kích ứng.</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Các yếu tố AI đang theo dõi</h2>
-
+            <DashboardPanel title="Các yếu tố AI đang theo dõi">
                 <div className="environment-grid">
                     <div>
                         <strong>Không khí trong phòng</strong>
@@ -83,7 +80,7 @@ export default function EnvironmentInfo() {
                         <span>Ghi nhận nguy cơ từ bụi mịn, khói thuốc hoặc ô nhiễm.</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

@@ -1,6 +1,7 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
 import MetricCard from "../components/dashboard/MetricCard.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function DoctorOverview() {
     return (
@@ -39,14 +40,10 @@ export default function DoctorOverview() {
                 />
             </div>
 
-            <section className="dashboard-panel">
-                <div className="panel-header">
-                    <div>
-                        <h2>Danh sách bệnh nhân cần chú ý</h2>
-                        <p>AI sắp xếp theo mức độ cần can thiệp lâm sàng.</p>
-                    </div>
-                </div>
-
+            <DashboardPanel
+                title="Danh sách bệnh nhân cần chú ý"
+                subtitle="AI sắp xếp theo mức độ cần can thiệp lâm sàng."
+            >
                 <div className="patient-table">
                     <div className="patient-table__row patient-table__row--head">
                         <span>Bệnh nhân</span>
@@ -76,11 +73,9 @@ export default function DoctorOverview() {
                         <span>Triệu chứng ít thay đổi</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Cảnh báo AI gần đây</h2>
-
+            <DashboardPanel title="Cảnh báo AI gần đây">
                 <div className="alert-list">
                     <div className="alert-item alert-item--danger">
                         <strong>Nguy cơ tái phát triệu chứng</strong>
@@ -97,7 +92,7 @@ export default function DoctorOverview() {
                         <span>15 bệnh nhân có xu hướng cải thiện ổn định trong tuần này.</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

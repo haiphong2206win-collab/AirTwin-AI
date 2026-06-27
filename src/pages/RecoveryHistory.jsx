@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function RecoveryHistory() {
     return (
@@ -7,9 +8,7 @@ export default function RecoveryHistory() {
             title="Lịch sử phục hồi"
             subtitle="Xem lại tiến trình phục hồi hô hấp qua từng ngày."
         >
-            <section className="dashboard-panel">
-                <h2>Dòng thời gian phục hồi</h2>
-
+            <DashboardPanel title="Dòng thời gian phục hồi">
                 <div className="history-list">
                     <div>
                         <span>Hôm nay</span>
@@ -35,11 +34,9 @@ export default function RecoveryHistory() {
                         <p>Người bệnh còn mệt, ho nhiều hơn vào buổi tối.</p>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Tóm tắt xu hướng</h2>
-
+            <DashboardPanel title="Tóm tắt xu hướng">
                 <div className="analysis-grid">
                     <div>
                         <span>7 ngày gần đây</span>
@@ -56,7 +53,7 @@ export default function RecoveryHistory() {
                         <strong>Trung bình</strong>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

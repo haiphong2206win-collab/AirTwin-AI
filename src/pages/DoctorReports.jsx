@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function DoctorReports() {
     return (
@@ -7,9 +8,7 @@ export default function DoctorReports() {
             title="Báo cáo AI"
             subtitle="Tóm tắt tình hình phục hồi và các nhóm bệnh nhân cần ưu tiên."
         >
-            <section className="dashboard-panel">
-                <h2>Báo cáo tổng quan tuần này</h2>
-
+            <DashboardPanel title="Báo cáo tổng quan tuần này">
                 <div className="report-grid">
                     <div>
                         <strong>15 bệnh nhân đang cải thiện</strong>
@@ -32,22 +31,18 @@ export default function DoctorReports() {
                         </span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>AI Summary</h2>
-
+            <DashboardPanel title="AI Summary">
                 <p className="ai-summary">
                     Trong tuần này, đa số bệnh nhân có xu hướng phục hồi tích cực. Tuy nhiên,
                     một nhóm nhỏ có tần suất ho tăng, mức chú ý lâm sàng cao hơn và cần bác sĩ
                     xem xét thêm. AirTwin AI đề xuất ưu tiên kiểm tra các bệnh nhân có Clinical
                     Attention Level cao hoặc có cảnh báo liên tục trong 48 giờ gần nhất.
                 </p>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Khuyến nghị ưu tiên</h2>
-
+            <DashboardPanel title="Khuyến nghị ưu tiên">
                 <div className="report-grid">
                     <div>
                         <strong>Ưu tiên 1</strong>
@@ -71,7 +66,7 @@ export default function DoctorReports() {
                         </span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

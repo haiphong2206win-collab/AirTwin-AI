@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function DoctorAlerts() {
     return (
@@ -7,9 +8,7 @@ export default function DoctorAlerts() {
             title="Danh sách cảnh báo"
             subtitle="Các tín hiệu AI cần bác sĩ xem xét và ưu tiên xử lý."
         >
-            <section className="dashboard-panel">
-                <h2>Cảnh báo đang hoạt động</h2>
-
+            <DashboardPanel title="Cảnh báo đang hoạt động">
                 <div className="alert-list">
                     <div className="alert-item alert-item--danger">
                         <strong>Nguy cơ cao - Trần Quốc Huy</strong>
@@ -35,7 +34,7 @@ export default function DoctorAlerts() {
                         <button type="button">Đánh dấu đã xem</button>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

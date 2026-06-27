@@ -1,6 +1,7 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
 import MetricCard from "../components/dashboard/MetricCard.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 // muốn dùng layout thì phải import nó vào page.
 // Mình sẽ không dùng <main> riêng nữa, vì DashboardLayout đã có <main> rồi.
 
@@ -50,14 +51,10 @@ export default function PatientOverview() {
                 ))}
             </div>
 
-            <section className="dashboard-panel">
-                <div className="panel-header">
-                    <div>
-                        <h2>Nhiệm vụ hôm nay</h2>
-                        <p>Những việc bệnh nhân cần hoàn thành để hệ thống theo dõi phục hồi chính xác hơn.</p>
-                    </div>
-                </div>
-
+            <DashboardPanel
+                title="Nhiệm vụ hôm nay"
+                subtitle="Những việc bệnh nhân cần hoàn thành để hệ thống theo dõi phục hồi chính xác hơn."
+            >
                 <div className="task-list">
                     {todayTasks.map((task) => (
                         <div key={task.id}>
@@ -72,7 +69,7 @@ export default function PatientOverview() {
                         </div>
                     ))}
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

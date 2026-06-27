@@ -1,6 +1,7 @@
 import { NavLink } from "react-router";
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 // test data web tĩnh
 import { patients } from "../data/doctorData.js";
 
@@ -33,14 +34,10 @@ export default function DoctorPatients() {
             title="Danh sách bệnh nhân"
             subtitle="Theo dõi trạng thái phục hồi của các bệnh nhân sau xuất viện."
         >
-            <section className="dashboard-panel">
-                <div className="panel-header">
-                    <div>
-                        <h2>Bệnh nhân đang theo dõi</h2>
-                        <p>Danh sách mô phỏng cho demo AirTwin AI.</p>
-                    </div>
-                </div>
-
+            <DashboardPanel
+                title="Bệnh nhân đang theo dõi"
+                subtitle="Danh sách mô phỏng cho demo AirTwin AI."
+            >
                 <div className="patient-table">
                     <div className="patient-table__row patient-table__row--head">
                         <span>Bệnh nhân</span>
@@ -67,7 +64,7 @@ export default function DoctorPatients() {
                         </div>
                     ))}
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

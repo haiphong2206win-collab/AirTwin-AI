@@ -1,6 +1,7 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
 import MetricCard from "../components/dashboard/MetricCard.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function DoctorPatientDetail() {
     return (
@@ -39,9 +40,7 @@ export default function DoctorPatientDetail() {
                 />
             </div>
 
-            <section className="dashboard-panel">
-                <h2>Explainable Recovery Status</h2>
-
+            <DashboardPanel title="Explainable Recovery Status">
                 <div className="explain-list">
                     <div>
                         <strong>Lý do AI đánh giá cần chú ý</strong>
@@ -67,11 +66,9 @@ export default function DoctorPatientDetail() {
                         </span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Dữ liệu theo dõi gần đây</h2>
-
+            <DashboardPanel title="Dữ liệu theo dõi gần đây">
                 <div className="patient-table">
                     <div className="patient-table__row patient-table__row--head">
                         <span>Ngày</span>
@@ -101,7 +98,7 @@ export default function DoctorPatientDetail() {
                         <span>Bụi thấp</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }
