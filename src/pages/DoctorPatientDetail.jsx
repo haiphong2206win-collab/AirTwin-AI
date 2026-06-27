@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
 
 export default function DoctorPatientDetail() {
     return (
@@ -11,27 +12,27 @@ export default function DoctorPatientDetail() {
                 <article className="metric-card">
                     <p>Bệnh nhân</p>
                     <h2>Trần Quốc Huy</h2>
-                    <span className="status-pill status-pill--danger">Ưu tiên cao</span>
+                    <StatusPill type="danger">Ưu tiên cao</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Recovery Status</p>
                     <h2>Cần chú ý</h2>
-                    <span className="status-pill status-pill--warning">Theo dõi sát</span>
+                    <StatusPill type="warning">Theo dõi sát</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Cough Trend</p>
                     <h2>Tăng 24%</h2>
-                    <span className="status-pill status-pill--danger">Bất thường</span>
+                    <StatusPill type="danger">Bất thường</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Environment Risk</p>
                     <h2>Trung bình</h2>
-                    <span className="status-pill status-pill--warning">
+                    <StatusPill type="warning">
                         Có yếu tố kích ứng
-                    </span>
+                    </StatusPill>
                 </article>
             </div>
 
@@ -78,21 +79,21 @@ export default function DoctorPatientDetail() {
 
                     <div className="patient-table__row">
                         <strong>Hôm nay</strong>
-                        <span className="status-pill status-pill--danger">Tăng</span>
+                        <StatusPill type="danger">Tăng</StatusPill>
                         <span>Khó thở nhẹ</span>
                         <span>Độ ẩm thấp</span>
                     </div>
 
                     <div className="patient-table__row">
                         <strong>Hôm qua</strong>
-                        <span className="status-pill status-pill--warning">Tăng nhẹ</span>
+                        <StatusPill type="warning">Tăng nhẹ</StatusPill>
                         <span>Ho nhiều buổi tối</span>
                         <span>Ổn định</span>
                     </div>
 
                     <div className="patient-table__row">
                         <strong>2 ngày trước</strong>
-                        <span className="status-pill status-pill--info">Ổn định</span>
+                        <StatusPill type="info">Ổn định</StatusPill>
                         <span>Không sốt</span>
                         <span>Bụi thấp</span>
                     </div>

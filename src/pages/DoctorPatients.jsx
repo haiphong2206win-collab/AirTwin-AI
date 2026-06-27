@@ -1,15 +1,16 @@
 import { NavLink } from "react-router";
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
 // test data web tĩnh
 import { patients } from "../data/doctorData.js";
 
 export default function DoctorPatients() {
-    const getRecoveryClass = (status) => {
-        if (status === "Đang cải thiện") return "status-pill--good";
-        if (status === "Cần theo dõi" || status === "Cần chú ý") return "status-pill--warning";
-        if (status === "Nguy cơ cao") return "status-pill--danger";
-        if (status === "Ổn định") return "status-pill--info";
-        return "status-pill--info";
+    const getRecoveryType = (status) => {
+        if (status === "Đang cải thiện") return "good";
+        if (status === "Cần theo dõi" || status === "Cần chú ý") return "warning";
+        if (status === "Nguy cơ cao") return "danger";
+        if (status === "Ổn định") return "info";
+        return "info";
     };
 
     const getRiskLabel = (riskLevel) => {
@@ -19,11 +20,11 @@ export default function DoctorPatients() {
         return "Chưa rõ";
     };
 
-    const getRiskClass = (riskLevel) => {
-        if (riskLevel === "high") return "status-pill--danger";
-        if (riskLevel === "medium") return "status-pill--warning";
-        if (riskLevel === "low") return "status-pill--good";
-        return "status-pill--info";
+    const getRiskType = (riskLevel) => {
+        if (riskLevel === "high") return "danger";
+        if (riskLevel === "medium") return "warning";
+        if (riskLevel === "low") return "good";
+        return "info";
     };
 
     return (
@@ -52,13 +53,13 @@ export default function DoctorPatients() {
                         <div className="patient-table__row" key={patient.id}>
                             <strong>{patient.name}</strong>
 
-                            <span className={`status-pill ${getRecoveryClass(patient.status)}`}>
+                            <StatusPill type={getRecoveryType(patient.status)}>
                                 {patient.status}
-                            </span>
+                            </StatusPill>
 
-                            <span className={`status-pill ${getRiskClass(patient.riskLevel)}`}>
+                            <StatusPill type={getRiskType(patient.riskLevel)}>
                                 {getRiskLabel(patient.riskLevel)}
-                            </span>
+                            </StatusPill>
 
                             <NavLink className="text-link" to="/doctor/patient-detail">
                                 Xem chi tiết

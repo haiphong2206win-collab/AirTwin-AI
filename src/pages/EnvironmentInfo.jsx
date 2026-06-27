@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
 
 export default function EnvironmentInfo() {
     return (
@@ -11,25 +12,25 @@ export default function EnvironmentInfo() {
                 <article className="metric-card">
                     <p>Chất lượng không khí</p>
                     <h2>Tốt</h2>
-                    <span className="status-pill status-pill--good">An toàn</span>
+                    <StatusPill type="good">An toàn</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Độ ẩm</p>
                     <h2>58%</h2>
-                    <span className="status-pill status-pill--info">Phù hợp</span>
+                    <StatusPill type="info">Phù hợp</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Nhiệt độ</p>
                     <h2>27°C</h2>
-                    <span className="status-pill status-pill--info">Ổn định</span>
+                    <StatusPill type="info">Ổn định</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Khói bụi</p>
                     <h2>Thấp</h2>
-                    <span className="status-pill status-pill--good">Ít rủi ro</span>
+                    <StatusPill type="good">Ít rủi ro</StatusPill>
                 </article>
             </div>
 

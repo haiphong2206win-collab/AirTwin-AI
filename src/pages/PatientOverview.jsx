@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
 // muốn dùng layout thì phải import nó vào page.
 // Mình sẽ không dùng <main> riêng nữa, vì DashboardLayout đã có <main> rồi.
 
@@ -9,12 +10,12 @@ import {
 } from "../Data/patientData.js";
 
 export default function PatientOverview() {
-    const getStatusClass = (status) => {
-        if (status === "good") return "status-pill--good";
-        if (status === "warning") return "status-pill--warning";
-        if (status === "info") return "status-pill--info";
-        if (status === "danger") return "status-pill--danger";
-        return "status-pill--info";
+    const getStatusType = (status) => {
+        if (status === "good") return "good";
+        if (status === "warning") return "warning";
+        if (status === "info") return "info";
+        if (status === "danger") return "danger";
+        return "info";
     };
 
     const getTaskStatusLabel = (status) => {
@@ -23,10 +24,10 @@ export default function PatientOverview() {
         return "Chưa rõ";
     };
 
-    const getTaskStatusClass = (status) => {
-        if (status === "done") return "status-pill--good";
-        if (status === "pending") return "status-pill--warning";
-        return "status-pill--info";
+    const getTaskStatusType = (status) => {
+        if (status === "done") return "good";
+        if (status === "pending") return "warning";
+        return "info";
     };
 
     return (
@@ -41,9 +42,10 @@ export default function PatientOverview() {
                     <article className="metric-card" key={metric.id}>
                         <p>{metric.label}</p>
                         <h2>{metric.value}</h2>
-                        <span className={`status-pill ${getStatusClass(metric.status)}`}>
+
+                        <StatusPill type={getStatusType(metric.status)}>
                             {metric.note}
-                        </span>
+                        </StatusPill>
                     </article>
                 ))}
             </div>
@@ -64,9 +66,9 @@ export default function PatientOverview() {
                                 <span>{task.description}</span>
                             </div>
 
-                            <span className={`status-pill ${getTaskStatusClass(task.status)}`}>
+                            <StatusPill type={getTaskStatusType(task.status)}>
                                 {getTaskStatusLabel(task.status)}
-                            </span>
+                            </StatusPill>
                         </div>
                     ))}
                 </div>

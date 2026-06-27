@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
 
 export default function CoughRecording() {
     return (
@@ -9,9 +10,9 @@ export default function CoughRecording() {
         >
             <section className="dashboard-panel recording-panel">
                 <div>
-                    <span className="status-pill status-pill--info">
+                    <StatusPill type="info">
                         AI Cough Analysis
-                    </span>
+                    </StatusPill>
 
                     <h2>Sẵn sàng ghi âm</h2>
 
