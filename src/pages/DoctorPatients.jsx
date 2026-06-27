@@ -1,7 +1,31 @@
 import { NavLink } from "react-router";
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+// test data web tĩnh
+import { patients } from "../data/doctorData.js";
 
 export default function DoctorPatients() {
+    const getRecoveryClass = (status) => {
+        if (status === "Đang cải thiện") return "status-pill--good";
+        if (status === "Cần theo dõi" || status === "Cần chú ý") return "status-pill--warning";
+        if (status === "Nguy cơ cao") return "status-pill--danger";
+        if (status === "Ổn định") return "status-pill--info";
+        return "status-pill--info";
+    };
+
+    const getRiskLabel = (riskLevel) => {
+        if (riskLevel === "high") return "Cao";
+        if (riskLevel === "medium") return "Trung bình";
+        if (riskLevel === "low") return "Thấp";
+        return "Chưa rõ";
+    };
+
+    const getRiskClass = (riskLevel) => {
+        if (riskLevel === "high") return "status-pill--danger";
+        if (riskLevel === "medium") return "status-pill--warning";
+        if (riskLevel === "low") return "status-pill--good";
+        return "status-pill--info";
+    };
+
     return (
         <DashboardLayout
             role="doctor"
@@ -24,41 +48,23 @@ export default function DoctorPatients() {
                         <span>Hành động</span>
                     </div>
 
-                    <div className="patient-table__row">
-                        <strong>Nguyễn Minh Anh</strong>
-                        <span className="status-pill status-pill--good">Đang cải thiện</span>
-                        <span className="status-pill status-pill--warning">Trung bình</span>
-                        <NavLink className="text-link" to="/doctor/patient-detail">
-                            Xem chi tiết
-                        </NavLink>
-                    </div>
+                    {patients.map((patient) => (
+                        <div className="patient-table__row" key={patient.id}>
+                            <strong>{patient.name}</strong>
 
-                    <div className="patient-table__row">
-                        <strong>Trần Quốc Huy</strong>
-                        <span className="status-pill status-pill--warning">Cần chú ý</span>
-                        <span className="status-pill status-pill--danger">Cao</span>
-                        <NavLink className="text-link" to="/doctor/patient-detail">
-                            Xem chi tiết
-                        </NavLink>
-                    </div>
+                            <span className={`status-pill ${getRecoveryClass(patient.status)}`}>
+                                {patient.status}
+                            </span>
 
-                    <div className="patient-table__row">
-                        <strong>Lê Thảo Vy</strong>
-                        <span className="status-pill status-pill--info">Ổn định</span>
-                        <span className="status-pill status-pill--good">Thấp</span>
-                        <NavLink className="text-link" to="/doctor/patient-detail">
-                            Xem chi tiết
-                        </NavLink>
-                    </div>
+                            <span className={`status-pill ${getRiskClass(patient.riskLevel)}`}>
+                                {getRiskLabel(patient.riskLevel)}
+                            </span>
 
-                    <div className="patient-table__row">
-                        <strong>Phạm Gia Bảo</strong>
-                        <span className="status-pill status-pill--good">Đang cải thiện</span>
-                        <span className="status-pill status-pill--good">Thấp</span>
-                        <NavLink className="text-link" to="/doctor/patient-detail">
-                            Xem chi tiết
-                        </NavLink>
-                    </div>
+                            <NavLink className="text-link" to="/doctor/patient-detail">
+                                Xem chi tiết
+                            </NavLink>
+                        </div>
+                    ))}
                 </div>
             </section>
         </DashboardLayout>
