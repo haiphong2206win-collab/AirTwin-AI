@@ -1,5 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
-import StatusPill from "../components/dashboard/StatusPill.jsx";
+import MetricCard from "../components/dashboard/MetricCard.jsx";
 
 export default function EnvironmentInfo() {
     return (
@@ -9,29 +9,33 @@ export default function EnvironmentInfo() {
             subtitle="Theo dõi yếu tố môi trường có thể ảnh hưởng đến phục hồi hô hấp."
         >
             <div className="overview-grid">
-                <article className="metric-card">
-                    <p>Chất lượng không khí</p>
-                    <h2>Tốt</h2>
-                    <StatusPill type="good">An toàn</StatusPill>
-                </article>
+                <MetricCard
+                    label="Chất lượng không khí"
+                    value="Tốt"
+                    status="An toàn"
+                    statusType="good"
+                />
 
-                <article className="metric-card">
-                    <p>Độ ẩm</p>
-                    <h2>58%</h2>
-                    <StatusPill type="info">Phù hợp</StatusPill>
-                </article>
+                <MetricCard
+                    label="Độ ẩm"
+                    value="58%"
+                    status="Phù hợp"
+                    statusType="info"
+                />
 
-                <article className="metric-card">
-                    <p>Nhiệt độ</p>
-                    <h2>27°C</h2>
-                    <StatusPill type="info">Ổn định</StatusPill>
-                </article>
+                <MetricCard
+                    label="Nhiệt độ"
+                    value="27°C"
+                    status="Ổn định"
+                    statusType="info"
+                />
 
-                <article className="metric-card">
-                    <p>Khói bụi</p>
-                    <h2>Thấp</h2>
-                    <StatusPill type="good">Ít rủi ro</StatusPill>
-                </article>
+                <MetricCard
+                    label="Khói bụi"
+                    value="Thấp"
+                    status="Ít rủi ro"
+                    statusType="good"
+                />
             </div>
 
             <section className="dashboard-panel">

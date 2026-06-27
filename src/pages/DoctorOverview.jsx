@@ -1,5 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
+import MetricCard from "../components/dashboard/MetricCard.jsx";
 
 export default function DoctorOverview() {
     return (
@@ -9,29 +10,33 @@ export default function DoctorOverview() {
             subtitle="Theo dõi tình trạng phục hồi, cảnh báo và mức độ ưu tiên lâm sàng."
         >
             <div className="overview-grid">
-                <article className="metric-card">
-                    <p>Tổng bệnh nhân</p>
-                    <h2>24</h2>
-                    <StatusPill type="info">Đang theo dõi</StatusPill>
-                </article>
+                <MetricCard
+                    label="Tổng bệnh nhân"
+                    value="24"
+                    status="Đang theo dõi"
+                    statusType="info"
+                />
 
-                <article className="metric-card">
-                    <p>Cảnh báo mới</p>
-                    <h2>6</h2>
-                    <StatusPill type="warning">Cần kiểm tra</StatusPill>
-                </article>
+                <MetricCard
+                    label="Cảnh báo mới"
+                    value="6"
+                    status="Cần kiểm tra"
+                    statusType="warning"
+                />
 
-                <article className="metric-card">
-                    <p>Nguy cơ cao</p>
-                    <h2>3</h2>
-                    <StatusPill type="danger">Ưu tiên</StatusPill>
-                </article>
+                <MetricCard
+                    label="Nguy cơ cao"
+                    value="3"
+                    status="Ưu tiên"
+                    statusType="danger"
+                />
 
-                <article className="metric-card">
-                    <p>Đang cải thiện</p>
-                    <h2>15</h2>
-                    <StatusPill type="good">Ổn định</StatusPill>
-                </article>
+                <MetricCard
+                    label="Đang cải thiện"
+                    value="15"
+                    status="Ổn định"
+                    statusType="good"
+                />
             </div>
 
             <section className="dashboard-panel">

@@ -1,5 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
+import MetricCard from "../components/dashboard/MetricCard.jsx";
 
 export default function DoctorPatientDetail() {
     return (
@@ -9,31 +10,33 @@ export default function DoctorPatientDetail() {
             subtitle="Xem hồ sơ phục hồi, cảnh báo và giải thích AI của một bệnh nhân."
         >
             <div className="overview-grid">
-                <article className="metric-card">
-                    <p>Bệnh nhân</p>
-                    <h2>Trần Quốc Huy</h2>
-                    <StatusPill type="danger">Ưu tiên cao</StatusPill>
-                </article>
+                <MetricCard
+                    label="Bệnh nhân"
+                    value="Trần Quốc Huy"
+                    status="Ưu tiên cao"
+                    statusType="danger"
+                />
 
-                <article className="metric-card">
-                    <p>Recovery Status</p>
-                    <h2>Cần chú ý</h2>
-                    <StatusPill type="warning">Theo dõi sát</StatusPill>
-                </article>
+                <MetricCard
+                    label="Recovery Status"
+                    value="Cần chú ý"
+                    status="Theo dõi sát"
+                    statusType="warning"
+                />
 
-                <article className="metric-card">
-                    <p>Cough Trend</p>
-                    <h2>Tăng 24%</h2>
-                    <StatusPill type="danger">Bất thường</StatusPill>
-                </article>
+                <MetricCard
+                    label="Cough Trend"
+                    value="Tăng 24%"
+                    status="Bất thường"
+                    statusType="danger"
+                />
 
-                <article className="metric-card">
-                    <p>Environment Risk</p>
-                    <h2>Trung bình</h2>
-                    <StatusPill type="warning">
-                        Có yếu tố kích ứng
-                    </StatusPill>
-                </article>
+                <MetricCard
+                    label="Environment Risk"
+                    value="Trung bình"
+                    status="Có yếu tố kích ứng"
+                    statusType="warning"
+                />
             </div>
 
             <section className="dashboard-panel">

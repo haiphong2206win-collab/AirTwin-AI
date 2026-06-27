@@ -1,5 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
+import MetricCard from "../components/dashboard/MetricCard.jsx";
 // muốn dùng layout thì phải import nó vào page.
 // Mình sẽ không dùng <main> riêng nữa, vì DashboardLayout đã có <main> rồi.
 
@@ -39,14 +40,13 @@ export default function PatientOverview() {
         >
             <div className="overview-grid">
                 {patientMetrics.map((metric) => (
-                    <article className="metric-card" key={metric.id}>
-                        <p>{metric.label}</p>
-                        <h2>{metric.value}</h2>
-
-                        <StatusPill type={getStatusType(metric.status)}>
-                            {metric.note}
-                        </StatusPill>
-                    </article>
+                    <MetricCard
+                        key={metric.id}
+                        label={metric.label}
+                        value={metric.value}
+                        status={metric.note}
+                        statusType={getStatusType(metric.status)}
+                    />
                 ))}
             </div>
 
