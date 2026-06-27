@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
 
 export default function DoctorOverview() {
     return (
@@ -11,25 +12,25 @@ export default function DoctorOverview() {
                 <article className="metric-card">
                     <p>Tổng bệnh nhân</p>
                     <h2>24</h2>
-                    <span className="status-pill status-pill--info">Đang theo dõi</span>
+                    <StatusPill type="info">Đang theo dõi</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Cảnh báo mới</p>
                     <h2>6</h2>
-                    <span className="status-pill status-pill--warning">Cần kiểm tra</span>
+                    <StatusPill type="warning">Cần kiểm tra</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Nguy cơ cao</p>
                     <h2>3</h2>
-                    <span className="status-pill status-pill--danger">Ưu tiên</span>
+                    <StatusPill type="danger">Ưu tiên</StatusPill>
                 </article>
 
                 <article className="metric-card">
                     <p>Đang cải thiện</p>
                     <h2>15</h2>
-                    <span className="status-pill status-pill--good">Ổn định</span>
+                    <StatusPill type="good">Ổn định</StatusPill>
                 </article>
             </div>
 
@@ -51,22 +52,22 @@ export default function DoctorOverview() {
 
                     <div className="patient-table__row">
                         <strong>Nguyễn Minh Anh</strong>
-                        <span className="status-pill status-pill--good">Đang cải thiện</span>
-                        <span className="status-pill status-pill--warning">Trung bình</span>
+                        <StatusPill type="good">Đang cải thiện</StatusPill>
+                        <StatusPill type="warning">Trung bình</StatusPill>
                         <span>Ho giảm, SpO₂ ổn định</span>
                     </div>
 
                     <div className="patient-table__row">
                         <strong>Trần Quốc Huy</strong>
-                        <span className="status-pill status-pill--warning">Cần chú ý</span>
-                        <span className="status-pill status-pill--danger">Cao</span>
+                        <StatusPill type="warning">Cần chú ý</StatusPill>
+                        <StatusPill type="danger">Cao</StatusPill>
                         <span>Ho tăng, khó thở nhẹ</span>
                     </div>
 
                     <div className="patient-table__row">
                         <strong>Lê Thảo Vy</strong>
-                        <span className="status-pill status-pill--info">Ổn định</span>
-                        <span className="status-pill status-pill--good">Thấp</span>
+                        <StatusPill type="info">Ổn định</StatusPill>
+                        <StatusPill type="good">Thấp</StatusPill>
                         <span>Triệu chứng ít thay đổi</span>
                     </div>
                 </div>
