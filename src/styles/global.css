@@ -182,7 +182,7 @@ body {
     font-size: 14px;
 }
 
-/*CSS cho  */
+/*CSS cho dashboard */
 .dashboard-layout {
     min-height: 100vh;
     display: grid;
@@ -415,6 +415,8 @@ body {
     border-color: #bfdbfe;
 }
 
+
+/* CSS ghi âm tiếng ho */
 .recording-panel {
     display: flex;
     align-items: center;
@@ -513,7 +515,51 @@ body {
     line-height: 1.6;
 }
 
-/*CSS AI */
+
+/* danh sách bệnh nhân */
+.text-link {
+    color: var(--color-primary);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+/*cảnh báo */
+.alert-item button {
+    width: fit-content;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: white;
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+/* Chi tiết bệnh nhân.*/
+.explain-list {
+    display: grid;
+    gap: 14px;
+}
+
+.explain-list div {
+    display: grid;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+}
+
+.explain-list span {
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+
+/*CSS AI bệnh nhân */
 .copilot-panel {
     display: grid;
     gap: 16px;
@@ -613,4 +659,32 @@ body {
     margin: 0;
     color: var(--color-muted);
     line-height: 1.6;
+}
+
+
+/* CSS AI bac si */
+.report-grid {
+    display: grid;
+    gap: 14px;
+}
+
+.report-grid div {
+    display: grid;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+}
+
+.report-grid span {
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.ai-summary {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.8;
+    font-size: 17px;
 }
