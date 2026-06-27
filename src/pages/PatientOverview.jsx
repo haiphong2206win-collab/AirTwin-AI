@@ -1,72 +1,74 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
-//muốn dùng layout thì phải import nó vào page.
-//Mình sẽ không dùng <main> riêng nữa, vì DashboardLayout đã có <main> rồi.
+// muốn dùng layout thì phải import nó vào page.
+// Mình sẽ không dùng <main> riêng nữa, vì DashboardLayout đã có <main> rồi.
 
-
-
+import {
+    patientProfile,
+    patientMetrics,
+    todayTasks,
+} from "../Data/patientData.js";
 
 export default function PatientOverview() {
-    // tạo component
-    return (
+    const getStatusClass = (status) => {
+        if (status === "good") return "status-pill--good";
+        if (status === "warning") return "status-pill--warning";
+        if (status === "info") return "status-pill--info";
+        if (status === "danger") return "status-pill--danger";
+        return "status-pill--info";
+    };
 
+    const getTaskStatusLabel = (status) => {
+        if (status === "done") return "Đã hoàn thành";
+        if (status === "pending") return "Chưa hoàn thành";
+        return "Chưa rõ";
+    };
+
+    const getTaskStatusClass = (status) => {
+        if (status === "done") return "status-pill--good";
+        if (status === "pending") return "status-pill--warning";
+        return "status-pill--info";
+    };
+
+    return (
         <DashboardLayout
-            /*bọc nội dung - dashboard để truyền dữ liệu từ page vào layout */
             role="patient"
             title="Tổng quan phục hồi"
-            subtitle="Theo dõi trạng thái phục hồi hô hấp sau xuất viện."
+            subtitle={`Theo dõi trạng thái phục hồi hô hấp sau xuất viện của ${patientProfile.name}.`}
+            userName={patientProfile.name}
         >
             <div className="overview-grid">
-                {/*vùng chứa các thẻ thống kê nhanh */}
-                {/*className="metric-card" =dùng để tạo giao diện dạng card.  */}
-
-                <article className="metric-card">
-                    {/*hiển thị trạng thái phục hồi tổng quát của bệnh nhân. */}
-                    <p>Recovery Status</p>
-                    <h2>Đang cải thiện</h2>
-                    <span className="status-pill status-pill--good">Tốt</span>
-                </article>
-
-                <article className="metric-card">
-                    {/*mức độ cần bác sĩ chú ý. */}
-                    <p>Clinical Attention</p>
-                    <h2>Trung bình</h2>
-                    <span className="status-pill status-pill--warning">Cần theo dõi</span>
-                </article>
-
-                <article className="metric-card">
-                    {/*xu hướng tiếng ho. */}
-                    <p>Cough Trend</p>
-                    <h2>Giảm 18%</h2>
-                    <span className="status-pill status-pill--good">So với hôm qua</span>
-                </article>
-
-                <article className="metric-card">
-                    {/*rủi ro từ môi trường sống.*/}
-                    <p>Environment Risk</p>
-                    <h2>Thấp</h2>
-                    <span className="status-pill status-pill--info">Ổn định</span>
-                </article>
+                {patientMetrics.map((metric) => (
+                    <article className="metric-card" key={metric.id}>
+                        <p>{metric.label}</p>
+                        <h2>{metric.value}</h2>
+                        <span className={`status-pill ${getStatusClass(metric.status)}`}>
+                            {metric.note}
+                        </span>
+                    </article>
+                ))}
             </div>
 
             <section className="dashboard-panel">
-                {/*hiển thị danh sách nhiệm vụ mà bệnh nhân cần làm trong ngày. */}
-                <h2>Nhiệm vụ hôm nay</h2>
+                <div className="panel-header">
+                    <div>
+                        <h2>Nhiệm vụ hôm nay</h2>
+                        <p>Những việc bệnh nhân cần hoàn thành để hệ thống theo dõi phục hồi chính xác hơn.</p>
+                    </div>
+                </div>
 
                 <div className="task-list">
-                    <div>
-                        <strong>Ghi âm tiếng ho</strong>
-                        <span>Thời lượng đề xuất: 20 giây</span>
-                    </div>
+                    {todayTasks.map((task) => (
+                        <div key={task.id}>
+                            <div>
+                                <strong>{task.title}</strong>
+                                <span>{task.description}</span>
+                            </div>
 
-                    <div>
-                        <strong>Trả lời câu hỏi triệu chứng</strong>
-                        <span>Khó thở, đau ngực, mệt mỏi, sốt</span>
-                    </div>
-
-                    <div>
-                        <strong>Cập nhật môi trường sống</strong>
-                        <span>Không khí, nhiệt độ, độ ẩm, khói bụi</span>
-                    </div>
+                            <span className={`status-pill ${getTaskStatusClass(task.status)}`}>
+                                {getTaskStatusLabel(task.status)}
+                            </span>
+                        </div>
+                    ))}
                 </div>
             </section>
         </DashboardLayout>

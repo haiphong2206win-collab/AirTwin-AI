@@ -1,16 +1,16 @@
 import { NavLink } from "react-router";
-//NavLink dùng để chuyển trang trong React, giống link nhưng không reload lại web.
+// NavLink dùng để chuyển trang trong React, giống link nhưng không reload lại web.
 import AppLogo from "../components/common/AppLogo.jsx";
 
-export default function DashboardLayout({ role, title, subtitle, children }) {
-
-    /*layout nhận dữ liệu từ trang khác truyền vào. */
+export default function DashboardLayout({ role, title, subtitle, userName, children }) {
+    /* layout nhận dữ liệu từ trang khác truyền vào. */
     const isPatient = role === "patient";
 
-    //khỏi phải viết lặp className dài cho từng menu.
+    const displayName = userName || (isPatient ? "Dương Ngọc Quang" : "Dr. Dương Phong");
+
+    // khỏi phải viết lặp className dài cho từng menu.
     const navClass = ({ isActive }) =>
         isActive ? "dashboard-nav__item active" : "dashboard-nav__item";
-
 
     return (
         <main className="dashboard-layout">
@@ -19,7 +19,6 @@ export default function DashboardLayout({ role, title, subtitle, children }) {
 
                 <nav className="dashboard-nav">
                     {isPatient ? (
-
                         <>
                             <NavLink to="/patient/overview" className={navClass}>
                                 Tổng quan phục hồi
@@ -51,25 +50,25 @@ export default function DashboardLayout({ role, title, subtitle, children }) {
                         </>
                     ) : (
                         <>
-                            <button className="dashboard-nav__item active" type="button">
+                            <NavLink to="/doctor/overview" className={navClass}>
                                 Tổng quan bệnh nhân
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/doctor/patients" className={navClass}>
                                 Danh sách bệnh nhân
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/doctor/alerts" className={navClass}>
                                 Danh sách cảnh báo
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/doctor/patient-detail" className={navClass}>
                                 Chi tiết bệnh nhân
-                            </button>
+                            </NavLink>
 
-                            <button className="dashboard-nav__item" type="button">
+                            <NavLink to="/doctor/reports" className={navClass}>
                                 Báo cáo AI
-                            </button>
+                            </NavLink>
                         </>
                     )}
                 </nav>
@@ -88,16 +87,11 @@ export default function DashboardLayout({ role, title, subtitle, children }) {
 
                     <div className="dashboard-user">
                         <span>{isPatient ? "Vai trò bệnh nhân" : "Vai trò bác sĩ"}</span>
-                        <strong>{isPatient ? "Dương Ngọc Quang " : "Dr. Dương Phong"}</strong>
+                        <strong>{displayName}</strong>
                     </div>
                 </header>
 
                 <div className="dashboard-content">{children}</div>
-                {/* quan trọng children là phần nội dung riêng từng trang 
-DashboardLayout = khung chung
-PatientOverview = nội dung bên trong khung
-DoctorOverview = nội dung bên trong khung
-                */}
             </section>
         </main>
     );
