@@ -2,7 +2,7 @@ import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 import PatientTable from "../components/doctor/PatientTable.jsx";
 // test data web tĩnh
-import { patients } from "../data/doctorData.js";
+import { patients } from "../Data/doctorData.js";
 
 export default function DoctorPatients() {
     return (
