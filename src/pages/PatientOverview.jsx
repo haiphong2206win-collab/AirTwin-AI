@@ -1,4 +1,7 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
+import MetricCard from "../components/dashboard/MetricCard.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 // muốn dùng layout thì phải import nó vào page.
 // Mình sẽ không dùng <main> riêng nữa, vì DashboardLayout đã có <main> rồi.
 
@@ -9,12 +12,12 @@ import {
 } from "../Data/patientData.js";
 
 export default function PatientOverview() {
-    const getStatusClass = (status) => {
-        if (status === "good") return "status-pill--good";
-        if (status === "warning") return "status-pill--warning";
-        if (status === "info") return "status-pill--info";
-        if (status === "danger") return "status-pill--danger";
-        return "status-pill--info";
+    const getStatusType = (status) => {
+        if (status === "good") return "good";
+        if (status === "warning") return "warning";
+        if (status === "info") return "info";
+        if (status === "danger") return "danger";
+        return "info";
     };
 
     const getTaskStatusLabel = (status) => {
@@ -23,10 +26,10 @@ export default function PatientOverview() {
         return "Chưa rõ";
     };
 
-    const getTaskStatusClass = (status) => {
-        if (status === "done") return "status-pill--good";
-        if (status === "pending") return "status-pill--warning";
-        return "status-pill--info";
+    const getTaskStatusType = (status) => {
+        if (status === "done") return "good";
+        if (status === "pending") return "warning";
+        return "info";
     };
 
     return (
@@ -38,24 +41,20 @@ export default function PatientOverview() {
         >
             <div className="overview-grid">
                 {patientMetrics.map((metric) => (
-                    <article className="metric-card" key={metric.id}>
-                        <p>{metric.label}</p>
-                        <h2>{metric.value}</h2>
-                        <span className={`status-pill ${getStatusClass(metric.status)}`}>
-                            {metric.note}
-                        </span>
-                    </article>
+                    <MetricCard
+                        key={metric.id}
+                        label={metric.label}
+                        value={metric.value}
+                        status={metric.note}
+                        statusType={getStatusType(metric.status)}
+                    />
                 ))}
             </div>
 
-            <section className="dashboard-panel">
-                <div className="panel-header">
-                    <div>
-                        <h2>Nhiệm vụ hôm nay</h2>
-                        <p>Những việc bệnh nhân cần hoàn thành để hệ thống theo dõi phục hồi chính xác hơn.</p>
-                    </div>
-                </div>
-
+            <DashboardPanel
+                title="Nhiệm vụ hôm nay"
+                subtitle="Những việc bệnh nhân cần hoàn thành để hệ thống theo dõi phục hồi chính xác hơn."
+            >
                 <div className="task-list">
                     {todayTasks.map((task) => (
                         <div key={task.id}>
@@ -64,13 +63,13 @@ export default function PatientOverview() {
                                 <span>{task.description}</span>
                             </div>
 
-                            <span className={`status-pill ${getTaskStatusClass(task.status)}`}>
+                            <StatusPill type={getTaskStatusType(task.status)}>
                                 {getTaskStatusLabel(task.status)}
-                            </span>
+                            </StatusPill>
                         </div>
                     ))}
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

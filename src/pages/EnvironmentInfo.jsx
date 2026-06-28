@@ -1,4 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import MetricCard from "../components/dashboard/MetricCard.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function EnvironmentInfo() {
     return (
@@ -8,34 +10,36 @@ export default function EnvironmentInfo() {
             subtitle="Theo dõi yếu tố môi trường có thể ảnh hưởng đến phục hồi hô hấp."
         >
             <div className="overview-grid">
-                <article className="metric-card">
-                    <p>Chất lượng không khí</p>
-                    <h2>Tốt</h2>
-                    <span className="status-pill status-pill--good">An toàn</span>
-                </article>
+                <MetricCard
+                    label="Chất lượng không khí"
+                    value="Tốt"
+                    status="An toàn"
+                    statusType="good"
+                />
 
-                <article className="metric-card">
-                    <p>Độ ẩm</p>
-                    <h2>58%</h2>
-                    <span className="status-pill status-pill--info">Phù hợp</span>
-                </article>
+                <MetricCard
+                    label="Độ ẩm"
+                    value="58%"
+                    status="Phù hợp"
+                    statusType="info"
+                />
 
-                <article className="metric-card">
-                    <p>Nhiệt độ</p>
-                    <h2>27°C</h2>
-                    <span className="status-pill status-pill--info">Ổn định</span>
-                </article>
+                <MetricCard
+                    label="Nhiệt độ"
+                    value="27°C"
+                    status="Ổn định"
+                    statusType="info"
+                />
 
-                <article className="metric-card">
-                    <p>Khói bụi</p>
-                    <h2>Thấp</h2>
-                    <span className="status-pill status-pill--good">Ít rủi ro</span>
-                </article>
+                <MetricCard
+                    label="Khói bụi"
+                    value="Thấp"
+                    status="Ít rủi ro"
+                    statusType="good"
+                />
             </div>
 
-            <section className="dashboard-panel">
-                <h2>Khuyến nghị môi trường</h2>
-
+            <DashboardPanel title="Khuyến nghị môi trường">
                 <div className="task-list">
                     <div>
                         <strong>Giữ phòng thông thoáng</strong>
@@ -52,11 +56,9 @@ export default function EnvironmentInfo() {
                         <span>Độ ẩm quá thấp có thể làm đường thở khô và dễ kích ứng.</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Các yếu tố AI đang theo dõi</h2>
-
+            <DashboardPanel title="Các yếu tố AI đang theo dõi">
                 <div className="environment-grid">
                     <div>
                         <strong>Không khí trong phòng</strong>
@@ -78,7 +80,7 @@ export default function EnvironmentInfo() {
                         <span>Ghi nhận nguy cơ từ bụi mịn, khói thuốc hoặc ô nhiễm.</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

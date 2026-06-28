@@ -1,4 +1,7 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
+import MetricCard from "../components/dashboard/MetricCard.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function DoctorPatientDetail() {
     return (
@@ -8,36 +11,36 @@ export default function DoctorPatientDetail() {
             subtitle="Xem hồ sơ phục hồi, cảnh báo và giải thích AI của một bệnh nhân."
         >
             <div className="overview-grid">
-                <article className="metric-card">
-                    <p>Bệnh nhân</p>
-                    <h2>Trần Quốc Huy</h2>
-                    <span className="status-pill status-pill--danger">Ưu tiên cao</span>
-                </article>
+                <MetricCard
+                    label="Bệnh nhân"
+                    value="Trần Quốc Huy"
+                    status="Ưu tiên cao"
+                    statusType="danger"
+                />
 
-                <article className="metric-card">
-                    <p>Recovery Status</p>
-                    <h2>Cần chú ý</h2>
-                    <span className="status-pill status-pill--warning">Theo dõi sát</span>
-                </article>
+                <MetricCard
+                    label="Recovery Status"
+                    value="Cần chú ý"
+                    status="Theo dõi sát"
+                    statusType="warning"
+                />
 
-                <article className="metric-card">
-                    <p>Cough Trend</p>
-                    <h2>Tăng 24%</h2>
-                    <span className="status-pill status-pill--danger">Bất thường</span>
-                </article>
+                <MetricCard
+                    label="Cough Trend"
+                    value="Tăng 24%"
+                    status="Bất thường"
+                    statusType="danger"
+                />
 
-                <article className="metric-card">
-                    <p>Environment Risk</p>
-                    <h2>Trung bình</h2>
-                    <span className="status-pill status-pill--warning">
-                        Có yếu tố kích ứng
-                    </span>
-                </article>
+                <MetricCard
+                    label="Environment Risk"
+                    value="Trung bình"
+                    status="Có yếu tố kích ứng"
+                    statusType="warning"
+                />
             </div>
 
-            <section className="dashboard-panel">
-                <h2>Explainable Recovery Status</h2>
-
+            <DashboardPanel title="Explainable Recovery Status">
                 <div className="explain-list">
                     <div>
                         <strong>Lý do AI đánh giá cần chú ý</strong>
@@ -63,11 +66,9 @@ export default function DoctorPatientDetail() {
                         </span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Dữ liệu theo dõi gần đây</h2>
-
+            <DashboardPanel title="Dữ liệu theo dõi gần đây">
                 <div className="patient-table">
                     <div className="patient-table__row patient-table__row--head">
                         <span>Ngày</span>
@@ -78,26 +79,26 @@ export default function DoctorPatientDetail() {
 
                     <div className="patient-table__row">
                         <strong>Hôm nay</strong>
-                        <span className="status-pill status-pill--danger">Tăng</span>
+                        <StatusPill type="danger">Tăng</StatusPill>
                         <span>Khó thở nhẹ</span>
                         <span>Độ ẩm thấp</span>
                     </div>
 
                     <div className="patient-table__row">
                         <strong>Hôm qua</strong>
-                        <span className="status-pill status-pill--warning">Tăng nhẹ</span>
+                        <StatusPill type="warning">Tăng nhẹ</StatusPill>
                         <span>Ho nhiều buổi tối</span>
                         <span>Ổn định</span>
                     </div>
 
                     <div className="patient-table__row">
                         <strong>2 ngày trước</strong>
-                        <span className="status-pill status-pill--info">Ổn định</span>
+                        <StatusPill type="info">Ổn định</StatusPill>
                         <span>Không sốt</span>
                         <span>Bụi thấp</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

@@ -1,4 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
+import AlertItem from "../components/doctor/AlertItem.jsx";
 
 export default function DoctorAlerts() {
     return (
@@ -7,35 +9,30 @@ export default function DoctorAlerts() {
             title="Danh sách cảnh báo"
             subtitle="Các tín hiệu AI cần bác sĩ xem xét và ưu tiên xử lý."
         >
-            <section className="dashboard-panel">
-                <h2>Cảnh báo đang hoạt động</h2>
-
+            <DashboardPanel title="Cảnh báo đang hoạt động">
                 <div className="alert-list">
-                    <div className="alert-item alert-item--danger">
-                        <strong>Nguy cơ cao - Trần Quốc Huy</strong>
-                        <span>
-                            Tần suất ho tăng trong 48 giờ qua, kèm khó thở nhẹ vào buổi tối.
-                        </span>
-                        <button type="button">Đánh dấu đã xem</button>
-                    </div>
+                    <AlertItem
+                        type="danger"
+                        title="Nguy cơ cao - Trần Quốc Huy"
+                        description="Tần suất ho tăng trong 48 giờ qua, kèm khó thở nhẹ vào buổi tối."
+                        showAction
+                    />
 
-                    <div className="alert-item alert-item--warning">
-                        <strong>Cần chú ý - Nguyễn Minh Anh</strong>
-                        <span>
-                            Mức chú ý lâm sàng trung bình, cần tiếp tục theo dõi triệu chứng.
-                        </span>
-                        <button type="button">Đánh dấu đã xem</button>
-                    </div>
+                    <AlertItem
+                        type="warning"
+                        title="Cần chú ý - Nguyễn Minh Anh"
+                        description="Mức chú ý lâm sàng trung bình, cần tiếp tục theo dõi triệu chứng."
+                        showAction
+                    />
 
-                    <div className="alert-item alert-item--info">
-                        <strong>Thông tin môi trường</strong>
-                        <span>
-                            Một số bệnh nhân ghi nhận độ ẩm thấp, có thể gây kích ứng đường thở.
-                        </span>
-                        <button type="button">Đánh dấu đã xem</button>
-                    </div>
+                    <AlertItem
+                        type="info"
+                        title="Thông tin môi trường"
+                        description="Một số bệnh nhân ghi nhận độ ẩm thấp, có thể gây kích ứng đường thở."
+                        showAction
+                    />
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

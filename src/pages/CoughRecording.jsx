@@ -1,4 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function CoughRecording() {
     return (
@@ -7,11 +9,11 @@ export default function CoughRecording() {
             title="Ghi âm tiếng ho"
             subtitle="Gửi mẫu tiếng ho để AI phân tích xu hướng phục hồi hô hấp."
         >
-            <section className="dashboard-panel recording-panel">
+            <DashboardPanel className="recording-panel">
                 <div>
-                    <span className="status-pill status-pill--info">
+                    <StatusPill type="info">
                         AI Cough Analysis
-                    </span>
+                    </StatusPill>
 
                     <h2>Sẵn sàng ghi âm</h2>
 
@@ -24,11 +26,9 @@ export default function CoughRecording() {
                 <button className="record-button" type="button">
                     Bắt đầu ghi âm
                 </button>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Kết quả phân tích gần nhất</h2>
-
+            <DashboardPanel title="Kết quả phân tích gần nhất">
                 <div className="analysis-grid">
                     <div>
                         <span>Tần suất ho</span>
@@ -45,11 +45,9 @@ export default function CoughRecording() {
                         <strong>Đang cải thiện</strong>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Hướng dẫn ghi âm</h2>
-
+            <DashboardPanel title="Hướng dẫn ghi âm">
                 <div className="task-list">
                     <div>
                         <strong>Chọn nơi yên tĩnh</strong>
@@ -66,7 +64,7 @@ export default function CoughRecording() {
                         <span>Ghi âm tiếng ho tự nhiên để AI phân tích chính xác hơn.</span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

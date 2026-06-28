@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function AiCopilot() {
     return (
@@ -7,7 +8,7 @@ export default function AiCopilot() {
             title="AI Copilot"
             subtitle="Trợ lý AI hỗ trợ giải thích tình trạng phục hồi bằng ngôn ngữ dễ hiểu."
         >
-            <section className="dashboard-panel copilot-panel">
+            <DashboardPanel className="copilot-panel">
                 <div className="chat-message chat-message--ai">
                     <strong>AirTwin AI</strong>
                     <p>
@@ -33,18 +34,16 @@ export default function AiCopilot() {
                     <input placeholder="Nhập câu hỏi cho AI Copilot..." />
                     <button type="button">Gửi</button>
                 </div>
-            </section>
+            </DashboardPanel>
 
-            <section className="dashboard-panel">
-                <h2>Gợi ý câu hỏi</h2>
-
+            <DashboardPanel title="Gợi ý câu hỏi">
                 <div className="suggestion-grid">
                     <button type="button">Hôm nay tôi hồi phục tốt không?</button>
                     <button type="button">Khi nào tôi cần liên hệ bác sĩ?</button>
                     <button type="button">Tiếng ho của tôi có đáng lo không?</button>
                     <button type="button">Tôi nên làm gì để phục hồi nhanh hơn?</button>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function HealthQuestions() {
     return (
@@ -7,9 +8,7 @@ export default function HealthQuestions() {
             title="Câu hỏi sức khỏe"
             subtitle="Cập nhật triệu chứng hằng ngày để AI theo dõi quá trình phục hồi."
         >
-            <section className="dashboard-panel">
-                <h2>Bảng câu hỏi hôm nay</h2>
-
+            <DashboardPanel title="Bảng câu hỏi hôm nay">
                 <div className="question-list">
                     <label>
                         Hôm nay bạn có khó thở không?
@@ -47,7 +46,7 @@ export default function HealthQuestions() {
                         Gửi câu trả lời
                     </button>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }

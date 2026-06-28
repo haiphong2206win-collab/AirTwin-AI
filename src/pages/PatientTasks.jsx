@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
+import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function PatientTasks() {
     return (
@@ -7,9 +8,7 @@ export default function PatientTasks() {
             title="Nhiệm vụ hôm nay"
             subtitle="Hoàn thành các bước theo dõi để AI đánh giá quá trình phục hồi."
         >
-            <section className="dashboard-panel">
-                <h2>Danh sách nhiệm vụ</h2>
-
+            <DashboardPanel title="Danh sách nhiệm vụ">
                 <div className="task-list">
                     <div>
                         <strong>Ghi âm tiếng ho</strong>
@@ -28,7 +27,7 @@ export default function PatientTasks() {
                         </span>
                     </div>
                 </div>
-            </section>
+            </DashboardPanel>
         </DashboardLayout>
     );
 }
