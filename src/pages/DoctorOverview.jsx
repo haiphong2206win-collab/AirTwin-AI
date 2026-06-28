@@ -2,6 +2,7 @@ import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
 import MetricCard from "../components/dashboard/MetricCard.jsx";
 import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
+import AlertItem from "../components/doctor/AlertItem.jsx";
 
 export default function DoctorOverview() {
     return (
@@ -77,20 +78,23 @@ export default function DoctorOverview() {
 
             <DashboardPanel title="Cảnh báo AI gần đây">
                 <div className="alert-list">
-                    <div className="alert-item alert-item--danger">
-                        <strong>Nguy cơ tái phát triệu chứng</strong>
-                        <span>Bệnh nhân Trần Quốc Huy có tần suất ho tăng trong 48 giờ qua.</span>
-                    </div>
+                    <AlertItem
+                        type="danger"
+                        title="Nguy cơ tái phát triệu chứng"
+                        description="Bệnh nhân Trần Quốc Huy có tần suất ho tăng trong 48 giờ qua."
+                    />
 
-                    <div className="alert-item alert-item--warning">
-                        <strong>Môi trường sống cần chú ý</strong>
-                        <span>Độ ẩm thấp và bụi mịn cao có thể ảnh hưởng quá trình phục hồi.</span>
-                    </div>
+                    <AlertItem
+                        type="warning"
+                        title="Môi trường sống cần chú ý"
+                        description="Độ ẩm thấp và bụi mịn cao có thể ảnh hưởng quá trình phục hồi."
+                    />
 
-                    <div className="alert-item alert-item--info">
-                        <strong>Phục hồi tích cực</strong>
-                        <span>15 bệnh nhân có xu hướng cải thiện ổn định trong tuần này.</span>
-                    </div>
+                    <AlertItem
+                        type="info"
+                        title="Phục hồi tích cực"
+                        description="15 bệnh nhân có xu hướng cải thiện ổn định trong tuần này."
+                    />
                 </div>
             </DashboardPanel>
         </DashboardLayout>
