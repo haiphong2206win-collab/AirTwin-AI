@@ -837,3 +837,45 @@ body {
     color: #15803d;
     font-weight: 700;
 }
+
+/* HealthQuestions Chọn câu trả lời Nhập ghi chú Bấm "Gửi câu trả lời"
+→ hiện thông báo đã gửi → hiện tóm tắt câu trả lời vừa gửi */
+.form-success {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding: 16px;
+    border-radius: 16px;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+}
+
+.form-success p {
+    margin: 0;
+    color: #15803d;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.answer-summary {
+    display: grid;
+    gap: 14px;
+}
+
+.answer-summary div {
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+}
+
+.answer-summary span {
+    color: var(--color-muted);
+    font-weight: 700;
+}
+
+.answer-summary strong {
+    line-height: 1.6;
+}
