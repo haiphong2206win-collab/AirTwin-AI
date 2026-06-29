@@ -793,3 +793,25 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* thêm tương tác bằng useState PatientTasks */
+.task-summary {
+    margin: 0 0 18px;
+    color: var(--color-muted);
+    font-weight: 700;
+}
+
+.task-button {
+    width: fit-content;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 800;
+}
+
+.task-button.is-done {
+    background: #e2e8f0;
+    color: var(--color-muted);
+}
