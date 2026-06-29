@@ -815,3 +815,25 @@ body {
     background: #e2e8f0;
     color: var(--color-muted);
 }
+
+/*ghi âm CoughRecording  */
+
+.record-button.is-recording {
+    background: #fef3c7;
+    color: #b45309;
+    box-shadow: 0 16px 36px rgba(180, 83, 9, 0.18);
+}
+
+.record-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.recording-feedback {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #dcfce7;
+    color: #15803d;
+    font-weight: 700;
+}
