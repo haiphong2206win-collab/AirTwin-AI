@@ -1,8 +1,92 @@
+import { useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import MetricCard from "../components/dashboard/MetricCard.jsx";
 import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
 
 export default function EnvironmentInfo() {
+    const [environment, setEnvironment] = useState({
+        airQuality: "Tốt",
+        humidity: "58",
+        temperature: "27",
+        dustLevel: "Thấp",
+    });
+
+    const [draftEnvironment, setDraftEnvironment] = useState(environment);
+    const [isUpdated, setIsUpdated] = useState(false);
+
+    const getAirStatusType = (airQuality) => {
+        if (airQuality === "Tốt") return "good";
+        if (airQuality === "Trung bình") return "warning";
+        if (airQuality === "Kém") return "danger";
+        return "info";
+    };
+
+    const getHumidityStatus = (humidity) => {
+        const humidityNumber = Number(humidity);
+
+        if (humidityNumber < 40) {
+            return {
+                status: "Quá khô",
+                type: "warning",
+            };
+        }
+
+        if (humidityNumber > 70) {
+            return {
+                status: "Quá ẩm",
+                type: "warning",
+            };
+        }
+
+        return {
+            status: "Phù hợp",
+            type: "info",
+        };
+    };
+
+    const getTemperatureStatus = (temperature) => {
+        const temperatureNumber = Number(temperature);
+
+        if (temperatureNumber < 20 || temperatureNumber > 32) {
+            return {
+                status: "Cần chú ý",
+                type: "warning",
+            };
+        }
+
+        return {
+            status: "Ổn định",
+            type: "info",
+        };
+    };
+
+    const getDustStatusType = (dustLevel) => {
+        if (dustLevel === "Thấp") return "good";
+        if (dustLevel === "Trung bình") return "warning";
+        if (dustLevel === "Cao") return "danger";
+        return "info";
+    };
+
+    const humidityStatus = getHumidityStatus(environment.humidity);
+    const temperatureStatus = getTemperatureStatus(environment.temperature);
+
+    const handleChangeEnvironment = (event) => {
+        const { name, value } = event.target;
+
+        setDraftEnvironment((currentEnvironment) => ({
+            ...currentEnvironment,
+            [name]: value,
+        }));
+
+        setIsUpdated(false);
+    };
+
+    const handleUpdateEnvironment = () => {
+        setEnvironment(draftEnvironment);
+        setIsUpdated(true);
+    };
+
     return (
         <DashboardLayout
             role="patient"
@@ -12,32 +96,100 @@ export default function EnvironmentInfo() {
             <div className="overview-grid">
                 <MetricCard
                     label="Chất lượng không khí"
-                    value="Tốt"
-                    status="An toàn"
-                    statusType="good"
+                    value={environment.airQuality}
+                    status={environment.airQuality === "Tốt" ? "An toàn" : "Cần theo dõi"}
+                    statusType={getAirStatusType(environment.airQuality)}
                 />
 
                 <MetricCard
                     label="Độ ẩm"
-                    value="58%"
-                    status="Phù hợp"
-                    statusType="info"
+                    value={`${environment.humidity}%`}
+                    status={humidityStatus.status}
+                    statusType={humidityStatus.type}
                 />
 
                 <MetricCard
                     label="Nhiệt độ"
-                    value="27°C"
-                    status="Ổn định"
-                    statusType="info"
+                    value={`${environment.temperature}°C`}
+                    status={temperatureStatus.status}
+                    statusType={temperatureStatus.type}
                 />
 
                 <MetricCard
                     label="Khói bụi"
-                    value="Thấp"
-                    status="Ít rủi ro"
-                    statusType="good"
+                    value={environment.dustLevel}
+                    status={environment.dustLevel === "Thấp" ? "Ít rủi ro" : "Cần chú ý"}
+                    statusType={getDustStatusType(environment.dustLevel)}
                 />
             </div>
+
+            <DashboardPanel title="Cập nhật môi trường sống">
+                {isUpdated && (
+                    <div className="form-success">
+                        <StatusPill type="good">Đã cập nhật</StatusPill>
+                        <p>
+                            Thông tin môi trường đã được cập nhật. AI sẽ dùng dữ liệu này
+                            để đánh giá yếu tố ảnh hưởng đến phục hồi hô hấp.
+                        </p>
+                    </div>
+                )}
+
+                <div className="environment-form">
+                    <label>
+                        Chất lượng không khí
+                        <select
+                            name="airQuality"
+                            value={draftEnvironment.airQuality}
+                            onChange={handleChangeEnvironment}
+                        >
+                            <option>Tốt</option>
+                            <option>Trung bình</option>
+                            <option>Kém</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Độ ẩm (%)
+                        <input
+                            name="humidity"
+                            type="number"
+                            value={draftEnvironment.humidity}
+                            onChange={handleChangeEnvironment}
+                        />
+                    </label>
+
+                    <label>
+                        Nhiệt độ (°C)
+                        <input
+                            name="temperature"
+                            type="number"
+                            value={draftEnvironment.temperature}
+                            onChange={handleChangeEnvironment}
+                        />
+                    </label>
+
+                    <label>
+                        Mức khói bụi
+                        <select
+                            name="dustLevel"
+                            value={draftEnvironment.dustLevel}
+                            onChange={handleChangeEnvironment}
+                        >
+                            <option>Thấp</option>
+                            <option>Trung bình</option>
+                            <option>Cao</option>
+                        </select>
+                    </label>
+
+                    <button
+                        className="primary-button"
+                        type="button"
+                        onClick={handleUpdateEnvironment}
+                    >
+                        Cập nhật môi trường
+                    </button>
+                </div>
+            </DashboardPanel>
 
             <DashboardPanel title="Khuyến nghị môi trường">
                 <div className="task-list">
