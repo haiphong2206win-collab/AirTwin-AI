@@ -895,3 +895,11 @@ body {
     color: var(--color-muted);
     line-height: 1.6;
 }
+
+
+/* thêm chút cho aicopilot*/
+.chat-input button:hover,
+.suggestion-grid button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
