@@ -879,3 +879,19 @@ body {
 .answer-summary strong {
     line-height: 1.6;
 }
+
+/* Đánh dấu đã xem*/
+
+.empty-state {
+    display: grid;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+}
+
+.empty-state span {
+    color: var(--color-muted);
+    line-height: 1.6;
+}

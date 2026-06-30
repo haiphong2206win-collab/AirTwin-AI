@@ -1,11 +1,12 @@
-//dùng cho các cảnh báo AI
-
+// dùng cho các cảnh báo AI
 
 export default function AlertItem({
     type = "info",
     title,
     description,
     showAction = false,
+    actionLabel = "Đánh dấu đã xem",
+    onAction,
 }) {
     return (
         <div className={`alert-item alert-item--${type}`}>
@@ -13,8 +14,8 @@ export default function AlertItem({
             <span>{description}</span>
 
             {showAction && (
-                <button type="button">
-                    Đánh dấu đã xem
+                <button type="button" onClick={onAction}>
+                    {actionLabel}
                 </button>
             )}
         </div>
