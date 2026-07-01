@@ -1,9 +1,32 @@
+import { useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import StatusPill from "../components/dashboard/StatusPill.jsx";
 import MetricCard from "../components/dashboard/MetricCard.jsx";
 import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
 
 export default function DoctorPatientDetail() {
+    const [reminderSent, setReminderSent] = useState(false);
+    const [note, setNote] = useState("");
+    const [savedNotes, setSavedNotes] = useState([]);
+
+    const handleSendReminder = () => {
+        setReminderSent(true);
+    };
+
+    const handleSaveNote = () => {
+        const trimmedNote = note.trim();
+
+        if (!trimmedNote) return;
+
+        const newNote = {
+            id: Date.now(),
+            content: trimmedNote,
+        };
+
+        setSavedNotes([newNote, ...savedNotes]);
+        setNote("");
+    };
+
     return (
         <DashboardLayout
             role="doctor"
@@ -39,6 +62,52 @@ export default function DoctorPatientDetail() {
                     statusType="warning"
                 />
             </div>
+
+            <DashboardPanel title="Thao tác của bác sĩ">
+                {reminderSent && (
+                    <p className="form-success-text">
+                        Đã gửi nhắc nhở cho bệnh nhân Trần Quốc Huy.
+                    </p>
+                )}
+
+                <div className="doctor-action-box">
+                    <button
+                        className="primary-button"
+                        type="button"
+                        onClick={handleSendReminder}
+                    >
+                        Gửi nhắc nhở bệnh nhân
+                    </button>
+
+                    <label>
+                        Ghi chú của bác sĩ
+                        <textarea
+                            value={note}
+                            placeholder="Nhập ghi chú theo dõi cho bệnh nhân..."
+                            onChange={(event) => setNote(event.target.value)}
+                        />
+                    </label>
+
+                    <button
+                        className="report-action"
+                        type="button"
+                        onClick={handleSaveNote}
+                    >
+                        Lưu ghi chú
+                    </button>
+                </div>
+
+                {savedNotes.length > 0 && (
+                    <div className="note-list">
+                        {savedNotes.map((savedNote) => (
+                            <div key={savedNote.id}>
+                                <strong>Ghi chú mới</strong>
+                                <span>{savedNote.content}</span>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </DashboardPanel>
 
             <DashboardPanel title="Explainable Recovery Status">
                 <div className="explain-list">
