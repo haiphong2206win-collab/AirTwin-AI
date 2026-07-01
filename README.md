@@ -236,4 +236,4 @@ Developed as a frontend demo project for the AirTwin AI concept.
 No license has been specified yet.
 ## Live Demo
 
-https://air-twin-ai.vercel.app/auth
+Xem demo tại đây: https://air-twin-ai.vercel.app
