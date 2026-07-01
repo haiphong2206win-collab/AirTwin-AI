@@ -929,3 +929,14 @@ body {
 .environment-form select:focus {
     border-color: var(--color-primary);
 }
+
+/* DoctorReports */
+.report-action {
+    width: fit-content;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 800;
+}

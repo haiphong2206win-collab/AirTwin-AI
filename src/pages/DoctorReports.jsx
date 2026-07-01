@@ -1,7 +1,57 @@
+import { useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
+
+const initialReports = [
+    {
+        id: 1,
+        patientName: "Nguyễn Minh Anh",
+        type: "Báo cáo phục hồi hằng ngày",
+        status: "Đã xem",
+    },
+    {
+        id: 2,
+        patientName: "Trần Quốc Bảo",
+        type: "Ghi âm tiếng ho",
+        status: "Chưa xem",
+    },
+    {
+        id: 3,
+        patientName: "Lê Thị Hương",
+        type: "Câu hỏi triệu chứng",
+        status: "Cần xử lý",
+    },
+];
 
 export default function DoctorReports() {
+    const [reports, setReports] = useState(initialReports);
+
+    const getStatusType = (status) => {
+        if (status === "Đã xem" || status === "Đã xử lý") return "good";
+        if (status === "Chưa xem") return "warning";
+        if (status === "Cần xử lý") return "danger";
+        return "info";
+    };
+
+    const handleUpdateReport = (reportId) => {
+        setReports((currentReports) =>
+            currentReports.map((report) => {
+                if (report.id !== reportId) return report;
+
+                if (report.status === "Chưa xem") {
+                    return { ...report, status: "Đã xem" };
+                }
+
+                if (report.status === "Cần xử lý") {
+                    return { ...report, status: "Đã xử lý" };
+                }
+
+                return report;
+            })
+        );
+    };
+
     return (
         <DashboardLayout
             role="doctor"
@@ -40,6 +90,33 @@ export default function DoctorReports() {
                     xem xét thêm. AirTwin AI đề xuất ưu tiên kiểm tra các bệnh nhân có Clinical
                     Attention Level cao hoặc có cảnh báo liên tục trong 48 giờ gần nhất.
                 </p>
+            </DashboardPanel>
+
+            <DashboardPanel title="Danh sách báo cáo mới">
+                <div className="report-grid">
+                    {reports.map((report) => (
+                        <div key={report.id}>
+                            <strong>{report.patientName}</strong>
+                            <span>{report.type}</span>
+
+                            <StatusPill type={getStatusType(report.status)}>
+                                {report.status}
+                            </StatusPill>
+
+                            {(report.status === "Chưa xem" || report.status === "Cần xử lý") && (
+                                <button
+                                    className="report-action"
+                                    type="button"
+                                    onClick={() => handleUpdateReport(report.id)}
+                                >
+                                    {report.status === "Chưa xem"
+                                        ? "Đánh dấu đã xem"
+                                        : "Đã xử lý"}
+                                </button>
+                            )}
+                        </div>
+                    ))}
+                </div>
             </DashboardPanel>
 
             <DashboardPanel title="Khuyến nghị ưu tiên">
