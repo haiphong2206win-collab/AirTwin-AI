@@ -986,3 +986,51 @@ body {
     color: var(--color-muted);
     line-height: 1.6;
 }
+
+
+/* RecoveryHistory*/
+.history-item {
+    text-align: left;
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    padding: 18px;
+    background: #f8fafc;
+}
+
+.history-item.active {
+    border-color: var(--color-primary);
+    background: #eff6ff;
+}
+
+.history-item span {
+    color: var(--color-muted);
+    font-weight: 700;
+}
+
+.history-item strong {
+    display: block;
+    margin: 8px 0;
+    font-size: 20px;
+}
+
+.history-item p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.selected-history {
+    display: grid;
+    gap: 12px;
+}
+
+.selected-history h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.selected-history p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+}

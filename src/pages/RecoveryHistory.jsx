@@ -1,7 +1,46 @@
+import { useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import DashboardPanel from "../components/dashboard/DashboardPanel.jsx";
+import StatusPill from "../components/dashboard/StatusPill.jsx";
+
+const historyItems = [
+    {
+        id: 1,
+        day: "Hôm nay",
+        status: "Đang cải thiện",
+        type: "good",
+        description: "Ho giảm, triệu chứng ổn định, môi trường sống an toàn.",
+        detail: "AI đánh giá quá trình phục hồi đang tích cực. Người bệnh nên tiếp tục hoàn thành nhiệm vụ hằng ngày.",
+    },
+    {
+        id: 2,
+        day: "Hôm qua",
+        status: "Ổn định",
+        type: "info",
+        description: "Không có cảnh báo mới, mức chú ý lâm sàng trung bình.",
+        detail: "Các chỉ số không có biến động lớn. Tiếp tục theo dõi tiếng ho và triệu chứng vào buổi tối.",
+    },
+    {
+        id: 3,
+        day: "2 ngày trước",
+        status: "Cần chú ý",
+        type: "warning",
+        description: "Tần suất ho tăng nhẹ, AI khuyến nghị theo dõi thêm.",
+        detail: "AI phát hiện tiếng ho tăng nhẹ. Nên tránh môi trường bụi và cập nhật triệu chứng đầy đủ.",
+    },
+    {
+        id: 4,
+        day: "3 ngày trước",
+        status: "Cần theo dõi",
+        type: "warning",
+        description: "Người bệnh còn mệt, ho nhiều hơn vào buổi tối.",
+        detail: "Triệu chứng mệt và ho buổi tối cần được theo dõi thêm để phát hiện thay đổi bất thường.",
+    },
+];
 
 export default function RecoveryHistory() {
+    const [selectedItem, setSelectedItem] = useState(historyItems[0]);
+
     return (
         <DashboardLayout
             role="patient"
@@ -10,29 +49,33 @@ export default function RecoveryHistory() {
         >
             <DashboardPanel title="Dòng thời gian phục hồi">
                 <div className="history-list">
-                    <div>
-                        <span>Hôm nay</span>
-                        <strong>Đang cải thiện</strong>
-                        <p>Ho giảm, triệu chứng ổn định, môi trường sống an toàn.</p>
-                    </div>
+                    {historyItems.map((item) => (
+                        <button
+                            key={item.id}
+                            className={
+                                selectedItem.id === item.id
+                                    ? "history-item active"
+                                    : "history-item"
+                            }
+                            type="button"
+                            onClick={() => setSelectedItem(item)}
+                        >
+                            <span>{item.day}</span>
+                            <strong>{item.status}</strong>
+                            <p>{item.description}</p>
+                        </button>
+                    ))}
+                </div>
+            </DashboardPanel>
 
-                    <div>
-                        <span>Hôm qua</span>
-                        <strong>Ổn định</strong>
-                        <p>Không có cảnh báo mới, mức chú ý lâm sàng trung bình.</p>
-                    </div>
+            <DashboardPanel title="Chi tiết mốc phục hồi">
+                <div className="selected-history">
+                    <StatusPill type={selectedItem.type}>
+                        {selectedItem.status}
+                    </StatusPill>
 
-                    <div>
-                        <span>2 ngày trước</span>
-                        <strong>Cần chú ý</strong>
-                        <p>Tần suất ho tăng nhẹ, AI khuyến nghị theo dõi thêm.</p>
-                    </div>
-
-                    <div>
-                        <span>3 ngày trước</span>
-                        <strong>Cần theo dõi</strong>
-                        <p>Người bệnh còn mệt, ho nhiều hơn vào buổi tối.</p>
-                    </div>
+                    <h3>{selectedItem.day}</h3>
+                    <p>{selectedItem.detail}</p>
                 </div>
             </DashboardPanel>
 
