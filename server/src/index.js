@@ -1,6 +1,9 @@
+// khởi động sever
+
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import healthRoutes from "./routes/healthRoutes.js";
 
 dotenv.config();
 
@@ -11,12 +14,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-app.get("/api/health", (req, res) => {
-    res.json({
-        status: "ok",
-        message: "AirTwin AI API is running",
-    });
-});
+app.use("/api/health", healthRoutes);
 
 app.listen(PORT, () => {
     console.log(`AirTwin AI backend is running on port ${PORT}`);
