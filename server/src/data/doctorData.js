@@ -1,0 +1,132 @@
+export const doctorMetrics = [
+    {
+        id: 1,
+        label: "Tổng bệnh nhân",
+        value: "128",
+        note: "Đang theo dõi sau xuất viện",
+    },
+    {
+        id: 2,
+        label: "Nguy cơ cao",
+        value: "12",
+        note: "Cần bác sĩ kiểm tra sớm",
+    },
+    {
+        id: 3,
+        label: "Cảnh báo hôm nay",
+        value: "8",
+        note: "Có dấu hiệu bất thường",
+    },
+    {
+        id: 4,
+        label: "Báo cáo mới",
+        value: "24",
+        note: "Từ bệnh nhân gửi về",
+    },
+];
+
+export const patients = [
+    {
+        id: 1,
+        name: "Nguyễn Minh Anh",
+        age: 42,
+        gender: "Nữ",
+        disease: "Viêm phổi",
+        status: "Đang cải thiện",
+        riskLevel: "low",
+        lastCheckin: "08:30 hôm nay",
+        spo2: 97,
+        heartRate: 78,
+        coughLevel: "Nhẹ",
+    },
+    {
+        id: 2,
+        name: "Trần Quốc Bảo",
+        age: 58,
+        gender: "Nam",
+        disease: "COPD",
+        status: "Cần theo dõi",
+        riskLevel: "medium",
+        lastCheckin: "07:45 hôm nay",
+        spo2: 93,
+        heartRate: 88,
+        coughLevel: "Trung bình",
+    },
+    {
+        id: 3,
+        name: "Lê Thị Hương",
+        age: 65,
+        gender: "Nữ",
+        disease: "Hen suyễn",
+        status: "Nguy cơ cao",
+        riskLevel: "high",
+        lastCheckin: "06:50 hôm nay",
+        spo2: 89,
+        heartRate: 102,
+        coughLevel: "Nặng",
+    },
+    {
+        id: 4,
+        name: "Phạm Văn Long",
+        age: 51,
+        gender: "Nam",
+        disease: "Hậu COVID-19",
+        status: "Ổn định",
+        riskLevel: "low",
+        lastCheckin: "09:10 hôm nay",
+        spo2: 96,
+        heartRate: 80,
+        coughLevel: "Nhẹ",
+    },
+];
+
+export const alerts = [
+    {
+        id: 1,
+        patientName: "Lê Thị Hương",
+        type: "SpO2 thấp",
+        level: "high",
+        message: "Chỉ số SpO2 giảm xuống 89%, cần kiểm tra ngay.",
+        time: "10 phút trước",
+    },
+    {
+        id: 2,
+        patientName: "Trần Quốc Bảo",
+        type: "Ho tăng",
+        level: "medium",
+        message: "Tần suất ho tăng so với ngày hôm qua.",
+        time: "35 phút trước",
+    },
+    {
+        id: 3,
+        patientName: "Nguyễn Minh Anh",
+        type: "Chưa check-in",
+        level: "low",
+        message: "Bệnh nhân chưa hoàn thành báo cáo sáng nay.",
+        time: "1 giờ trước",
+    },
+];
+
+export const reports = [
+    {
+        id: 1,
+        patientName: "Nguyễn Minh Anh",
+        reportType: "Báo cáo phục hồi hằng ngày",
+        date: "Hôm nay",
+        status: "Đã xem",
+    },
+    {
+        id: 2,
+        patientName: "Trần Quốc Bảo",
+        reportType: "Ghi âm tiếng ho",
+        date: "Hôm nay",
+        status: "Chưa xem",
+    },
+    {
+        id: 3,
+        patientName: "Lê Thị Hương",
+        reportType: "Câu hỏi triệu chứng",
+        date: "Hôm nay",
+        status: "Cần xử lý",
+    },
+];
